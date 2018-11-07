@@ -152,6 +152,7 @@
                                                         <option value="major">Major</option>
                                                         <option value="year">Year</option>
                                                         <option value="gpa">Grades of pre-req module</option>
+                                                        <option value="random">Randomize</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -196,6 +197,11 @@
 
     </div>
 
+    <!-- Export groupings into excel-->
+    <script type="text/javascript" src="js/tableExport.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.base64.js"></script>
+
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
@@ -229,6 +235,8 @@
 	<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
     <script src="js/groupingsVue.js"></script>
     <script src="js/main.js"></script>
+
+
 
     <!-- Apex charts-->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
