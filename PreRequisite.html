@@ -43,13 +43,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Analysis</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
-                                        <a href="Quiz Analysis.html">IVLE Quiz</a>
-                                    </li>
-                                    <li>
-                                        <a href="ca.html">Continuous Assessment</a>
-                                    </li>
-                                    <li>
-                                        <a href="mye.html">Mid-term test</a>
+                                        <a href="consolidation.html">Academic scores</a>
                                     </li>
                                     <li>
                                         <a href="tutorial.html">Tutorial attendance</a>
@@ -94,17 +88,18 @@
                 <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#smallmodal">What's this?</button>
         </div>
     </div>  
-    <!--colspan6-->
+<!--colspan6-->
     <div id="app">
         <div class = 'row'>
             <div class = 'col-lg-6'>
                 <div v-if="PreRequisite.Major">
                     <div class = 'au-card recent-report'>
                             <div class = "chart-info">
-                                <h3 class = 'title-2 tm-b-5'>{{ PreRequisite.Major.title }}</h3>
+                                <h3 class = 'title-2 tm-b-5'> Most Popular {{ PreRequisite.Major.title }}</h3>
                                 <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">More details</button>  
                             </div>
                             <column-chart :data = "PreRequisite.Major.data" :download='true'  xtitle="Major" ytitle="# of students"></column-chart>
+                            <router-link to = "/major">See more (Scroll to the bottom)</router-link>
                     </div>
                 </div>
             </div>
@@ -128,7 +123,7 @@
                         <div class = "chart-info">
                             <h3 class = 'title-2 tm-b-5'>{{ PreRequisite.PrevGrade.title }}</h3>
                             <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#largeModal">
-											Learn more</button>
+                                            Learn more</button>
                         </div>
                         <line-chart :data = "PreRequisite.PrevGrade.data" :min = "50" :download='true' xtitle="CAP" ytitle="# of students"></line-chart>
                     </div>
@@ -147,21 +142,40 @@
                 </div>
             </div>
         </div>
+        
+    <!-- colspan 12 Major extension -->
+        <div class = 'row'>
+            <div class = 'col-lg-12'>
+                <div v-if = "PreRequisite.Major && currentRoute === '/major'"> 
+                    <div class = 'au-card recent-report'>
+                        <div class = "chart-info">
+                            <h3> Full list of major distribution </h3>
+                            <i>Sortable and more friendly view of major distribution, especially for a very diluted class population</i>
+                        </div>
+                        <template>
+                            <b-table striped hover :items="PreRequisite.Major.data" :fields="fields"></b-table>
+                        </template>
+                        <router-link to = "/"> Collapse </router-link>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    <!-- end of extension -->
     </div> <!--forvue -->
 
     </div> <!--forstyle-->
         
-    <!-- modal medium -->
-			<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="mediumModalLabel">Abbreviations of Undergraduate Major</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
+        <!-- modal medium -->
+            <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="mediumModalLabel">Abbreviations of Undergraduate Major</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
                                 <table class="table table-borderless table-striped table-earning">
                                 <thead>
                                     <tr>
@@ -212,48 +226,48 @@
                                 </tbody>
                             
                             </table>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">OK I got it</button>
-						</div>
-					</div>
-				</div>
-			</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK I got it</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- end modal medium -->
         
         <!-- modal small -->
-			<div class="modal fade" id="smallmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-sm" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="smallmodalLabel">Dashboard on student profiles</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
+            <div class="modal fade" id="smallmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="smallmodalLabel">Dashboard on student profiles</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
                             <p> This dashboard showcases the basic profiles of your students in this module this year. The profiling includes their years of study, majors, grades from prerequisite modules (if available) and skills learned from all of their prerequisite modules.</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">OK I got it</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end modal small -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK I got it</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal small -->
         
         <!-- modal large -->
-			<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="largeModalLabel">Suggested distribution of CAP and grade conversion</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-								<table class="table table-borderless table-striped table-earning">
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="largeModalLabel">Suggested distribution of CAP and grade conversion</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <table class="table table-borderless table-striped table-earning">
                                 <thead>
                                     <tr>
                                         <th>CAP</th>
@@ -314,43 +328,54 @@
                                     </tr>
                                 </tbody>
                             </table>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
-    </div>
-			<!-- end modal large -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end modal large -->
         
     <script src="https://unpkg.com/vue"></script>
-	<script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
-	<script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
-	<script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-	<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
-        
+    <script src="https://unpkg.com/chart.js@2.7.2/dist/Chart.bundle.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vue-chartkick@0.4.0"></script>
+    <script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <!--for Bootstrap Vue JS table --> 
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
     <!-- Jquery JS-->
-	<script src="vendor/jquery-3.2.1.min.js"></script>
-	<!-- Bootstrap JS-->
-	<script src="vendor/bootstrap-4.1/popper.min.js"></script>
-	<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-	<!-- Vendor JS       -->
-	<script src="vendor/slick/slick.min.js"></script>
-	<script src="vendor/wow/wow.min.js"></script>
-	<script src="vendor/animsition/animsition.min.js"></script>
-	<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-	<script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-	<script src="vendor/counter-up/jquery.counterup.min.js"></script>
-	<script src="vendor/circle-progress/circle-progress.min.js"></script>
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-	<script src="vendor/chartjs/Chart.bundle.min.js"></script>
-	<script src="vendor/select2/select2.min.js"></script>
-	<!-- Main JS-->
-	<script src="js/main.js"></script>
-	
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS -->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+    
     <script>
+        const temp = { template: '<div>TEMP</div>' }
+
+        const routes = [
+            { path: '/major', component: temp},
+            { path: '/', component: temp},
+        ]
+        
+        const router = new VueRouter({
+            routes 
+        })
+        
         var config = {
             databaseURL: 'https://dataforgiang.firebaseio.com/' //put in your database URL here
         }
@@ -360,15 +385,33 @@
         
         new Vue ({
             el: '#app',
+            router,
             data: {
+                fields:[
+                    {
+                        key: '0',
+                        label: "Major",
+                        sortable: true
+                    },
+                    {
+                        key: '1',
+                        label: "Number of students",
+                        sortable: true
+                    },
+                ]
             },
             firebase: {
                 //bind a variable called PreRequisite to the database
                 PreRequisite: {
                     source: db.ref('PreRequisite'),
                     asObject: true
-                }
-            } 
+                },
+            },
+            computed: {
+                currentRoute () {
+                    return this.$route.path
+                }         
+            }  
         })
     </script>    
     </body>

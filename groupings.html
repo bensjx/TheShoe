@@ -53,13 +53,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Analysis</a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
-                                        <a href="Quiz Analysis.html">IVLE Quiz</a>
-                                    </li>
-                                    <li>
-                                        <a href="ca.html">Continuous Assessment</a>
-                                    </li>
-                                    <li>
-                                        <a href="mye.html">Mid-term test</a>
+                                        <a href="consolidation.html">Academic scores</a>
                                     </li>
                                     <li>
                                         <a href="tutorial.html">Tutorial attendance</a>
@@ -101,7 +95,7 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                    	<!-- Header-->
+                        <!-- Header-->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
@@ -115,8 +109,8 @@
                         <!-- End of overview-->
                         <!-- Form to key in inputs-->
                         <div class="row">
-                        	<div class="col-md-2"></div>
-                        	<div class="col-lg-8">
+                            <div class="col-md-2"></div>
+                            <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-header">
                                         <strong>Generate your groups</strong>
@@ -168,23 +162,23 @@
                         </div>
                         <!-- End of form to key in inputs-->
                         <!-- Table to show groupings-->
-						<div class="row">
-							<div class="col-md-12">
-								<table id="groupings" class="display">
-								    <thead>
-								        <tr>
-								            <th>Matric number</th>
-								            <th>Year</th>
-								            <th>Major</th>
-								            <th>Grades of pre requisite module</th>
-								            <th>Gender</th>
-								            <th>Group</th>
-								        </tr>
-								    </thead>
-								</table>
-							</div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="groupings" class="display">
+                                    <thead>
+                                        <tr>
+                                            <th>Matric number</th>
+                                            <th>Year</th>
+                                            <th>Major</th>
+                                            <th>Grades of pre requisite module</th>
+                                            <th>Gender</th>
+                                            <th>Group</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                             <a href="#" onClick ="$('#groupings').tableExport({type:'excel',escape:'false'});">Download as Excel</a>
-						</div>
+                        </div>
                         <!-- End of table to show groupungs-->
                         <!-- Footer-->
                         </div>
@@ -223,13 +217,13 @@
     <!-- Datatable -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
     <!-- Main JS-->
     <script src="https://gstatic.com/firebasejs/4.2.0/firebase.js"></script>
     <script src="https://unpkg.com/vue"></script>
-	<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
     <script src="js/groupingsVue.js"></script>
     <script src="js/main.js"></script>
 
