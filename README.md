@@ -8,3 +8,8 @@ Members:
 3) Benedict Soh
 
 Link to project: https://bensjx.github.io/TheShoe/PreRequisite.html
+
+Built Using:
+Vue.js
+Firebase
+Python 3
